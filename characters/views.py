@@ -31,7 +31,7 @@ class CharacterListView(generics.ListAPIView):
 
     def get_queryset(self) -> QuerySet:
         queryset = Character.objects.all()
-        name = self.request.query_params.get('name')
+        name = self.request.query_params.get("name")
         if name is not None:
             queryset = queryset.filter(name__icontains=name)
         return queryset
@@ -39,8 +39,13 @@ class CharacterListView(generics.ListAPIView):
     @extend_schema(
         # extra parameters added to the schema
         parameters=[
-            OpenApiParameter(name='name', description="Filter by characters name", required=False, type=str),
-               ],
+            OpenApiParameter(
+                name="name",
+                description="Filter by characters name",
+                required=False,
+                type=str,
+            ),
+        ],
     )
     def get(self, request):
         """Filter characters by name"""
