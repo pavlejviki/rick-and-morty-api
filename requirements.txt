@@ -31,6 +31,7 @@ psycopg2==2.9.5
 pyrsistent==0.19.2
 python-crontab==2.7.1
 python-dateutil==2.8.2
+python-dotenv==0.21.0
 pytz==2022.7
 PyYAML==6.0
 redis==4.4.0
