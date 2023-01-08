@@ -12,6 +12,8 @@ from characters.serializers import CharacterSerializer
 from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiExample
 from drf_spectacular.types import OpenApiTypes
 
+from pagination import CharactersListPagination
+
 
 @extend_schema(
     responses={status.HTTP_200_OK: CharacterSerializer},
@@ -28,6 +30,7 @@ def get_random_character_view(request: Request) -> Response:
 
 class CharacterListView(generics.ListAPIView):
     serializer_class = CharacterSerializer
+    pagination_class = CharactersListPagination
 
     def get_queryset(self) -> QuerySet:
         queryset = Character.objects.all()
